@@ -1,9 +1,19 @@
+
+package conversionTaux.session;
+
+import jakarta.ejb.*;
+import jakarta.persistence.*;
+
+
 @Singleton
 public class ConversionSingleton {
     public int cmpteur =0;
-    private ConversionSingleton instance = null;
+    private static ConversionSingleton instance = null;
+    private ConversionSingleton(){
+        
+    }
 
-    public ConversionSingleton getInstance (){
+    public static ConversionSingleton getInstance (){
         if (instance == null)
         {
             instance = new ConversionSingleton();

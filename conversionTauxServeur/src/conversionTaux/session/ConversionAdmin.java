@@ -1,13 +1,16 @@
 package conversionTaux.session;
 
-import javax.ejb.Stateful;
-
+import jakarta.ejb.*;
+import jakarta.persistence.*;
+import conversionTaux.entity.*;
+import conversionTaux.helper.*;
 @Stateful(mappedName="ConversionAdminJNDI")
 public class ConversionAdmin implements ConversionAdminItf,ConversionTauxCste{
 
     private AdminEntity ae  ;
     @PersistenceContext(unitName="ConversionAdminPU")
     private EntityManager em;
+
     public static int nbCnx = 0; 
 
     public String connecter(String login, String passwd){
@@ -31,7 +34,7 @@ public class ConversionAdmin implements ConversionAdminItf,ConversionTauxCste{
             return FAILED ;
     }
     public String consulterNbConnexions(){
-        return RESULTAT_ADMIN + ;
+        return RESULTAT_ADMIN + ConversionSingleton.getInstance().lire() ;
     }
 
 }
